@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @MappedSuperclass
 public class BaseModel {
-    @Id
+    @Id // PK attr for all the child classes of BaseModel.
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO INCREMENT.
     private Long id;
     private Date createdAt;
