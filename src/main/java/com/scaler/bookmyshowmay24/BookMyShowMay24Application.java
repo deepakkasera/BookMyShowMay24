@@ -1,6 +1,5 @@
 package com.scaler.bookmyshowmay24;
 
-import com.scaler.bookmyshowmay24.models.BaseModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
