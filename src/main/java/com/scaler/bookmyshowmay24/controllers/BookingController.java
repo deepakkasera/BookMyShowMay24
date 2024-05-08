@@ -2,6 +2,10 @@ package com.scaler.bookmyshowmay24.controllers;
 
 import com.scaler.bookmyshowmay24.dtos.CreateBookingRequestDto;
 import com.scaler.bookmyshowmay24.dtos.CreateBookingResponseDto;
+import com.scaler.bookmyshowmay24.dtos.ResponseStatus;
+import com.scaler.bookmyshowmay24.exceptions.ShowNotFoundException;
+import com.scaler.bookmyshowmay24.exceptions.UserNotFoundException;
+import com.scaler.bookmyshowmay24.models.Booking;
 import com.scaler.bookmyshowmay24.services.BookingService;
 import org.springframework.stereotype.Controller;
 
@@ -14,6 +18,19 @@ public class BookingController {
     }
 
     public CreateBookingResponseDto createBooking(CreateBookingRequestDto requestDto) {
-        return null;
+        CreateBookingResponseDto responseDto = new CreateBookingResponseDto();
+
+        try {
+            Booking booking = bookingService.createBooking(requestDto.getUserId(),
+                    requestDto.getShowSeatIds(),
+                    requestDto.getShowId());
+
+            responseDto.setBookingId(booking.getId());
+            responseDto.setResponseStatus(ResponseStatus.SUCCESS);
+        } catch (Exception e) {
+            responseDto.setResponseStatus(ResponseStatus.FAILURE);
+        }
+
+        return responseDto;
     }
 }
