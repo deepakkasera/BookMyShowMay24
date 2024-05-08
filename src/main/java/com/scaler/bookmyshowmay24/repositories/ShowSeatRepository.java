@@ -10,7 +10,8 @@ import java.util.List;
 public interface ShowSeatRepository extends JpaRepository<ShowSeat, Long> {
 
     //select * from show_seats where id IN (1, 2, 3, 4, 5)
-    List<ShowSeat> findAllById(List<Long> showSeatIds);
+    @Override
+    List<ShowSeat> findAllById(Iterable<Long> showSeatIds);
 
     @Override
     ShowSeat save(ShowSeat showSeat);

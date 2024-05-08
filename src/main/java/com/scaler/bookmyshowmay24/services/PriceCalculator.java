@@ -19,7 +19,7 @@ public class PriceCalculator {
     public int calculatePrice(Show show, List<ShowSeat> showSeats) {
         int amount = 0;
         List<ShowSeatType> showSeatTypes =
-                showSeatTypeRepository.findAllByShow(show.getId());
+                showSeatTypeRepository.findAllByShow(show);
 
         for (ShowSeat showSeat : showSeats) { // 10
             for (ShowSeatType showSeatType : showSeatTypes) { // 3
